@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/61ed255163.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        header{
+            height: 100vh;
+            background: url("wp2577314.jpg") center/cover;
+        }
+        ul{
+            justify-content: flex-end;
+            list-style-type: none;
+            color: #fff;
+            background-color: #303030;
+            height: 50px;
+        }
+        li{
+            padding: 15px;
+            border-left: 1px solid #424242;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <ul>
+            <li id='menu'><i class="fas fa-align-justify"></i></li>
+            <li class="elem">Home</li>
+            <li class="elem">Contact</li>
+            <li class="elem">How are you?</li>
+            <li class="elem">About</li>
+            <li class="elem">Archive</li>
+        </ul>
+    </header>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(()=>{
+            
+            
+            function vport(){
+                let flag = true;
+                if($(window).width() < 447){
+                    $("ul").css({
+                        display: "block",
+                        textAlign: "right"
+                    })
+                    $(".elem").hide()
+                    $(".elem").css("backgroundColor", "gray")
+                    $("li")
+                    .mouseover(function(){$(this).css('background-color', '#424242')})
+                    .mouseleave(function(){$(this).css('background-color', 'gray')});
+                    $("#menu").show().click(function(){
+                        if(flag)$(".elem").slideDown()
+                        else $(".elem").slideUp()
+                        flag = !flag
+                    })
+                }else{
+                    $("ul").css("display", "flex")
+                    $("#menu").hide()
+                    $(".elem").show()
+                    $(".elem").css("backgroundColor", "")
+                    $("li")
+                    .mouseover(function(){$(this).css('background-color', '#424242')})
+                    .mouseleave(function(){$(this).css('background-color', '')});
+                }
+            }
+            vport()
+            $(window).bind("resize", vport)
+        })
+    </script>
+</body>
+</html>
